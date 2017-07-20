@@ -19,4 +19,11 @@ public class Paddle : MonoBehaviour {
         PaddlePos.x=  Mathf.Clamp(MousePosInBlocks, MinRange_X, MaxRange_X);
         this.transform.SetPositionAndRotation(PaddlePos,Quaternion.identity);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+        //TODO give another push
+
+    }
 }
