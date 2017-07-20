@@ -9,11 +9,6 @@ public class SpawnManager : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        float X_spawnpos = Random.Range(0, 16);
-        last_star = Time.fixedTime;
-        GameObject new_star = Instantiate(star, new Vector3(X_spawnpos,10f, 0), Quaternion.identity);
-        new_star.AddComponent<Rigidbody2D>();
-        new_star.AddComponent<BoxCollider2D>();
 
     }
 	
@@ -21,13 +16,35 @@ public class SpawnManager : MonoBehaviour {
 	void Update ()
     {
         
-        if(Time.fixedTime>last_star+3f)
+        if(Time.fixedTime>last_star+1.5f)
         {
-            float X_spawnpos = Random.Range(0, 16);
-            GameObject new_star = Instantiate(star, new Vector3(X_spawnpos, 10f, 0), Quaternion.identity);
-            new_star.AddComponent<Rigidbody2D>();
-            new_star.AddComponent<BoxCollider2D>();
-            last_star = Time.fixedTime;
+           int Case_Spawn= Random.Range(0, 3);
+            switch(Case_Spawn)
+            {
+                case 0:
+                    SpawnStar(2f);
+                    break;
+                case 1:
+                    SpawnStar(6f);
+                    break;
+                case 2:
+                    SpawnStar(10f);
+                    break;
+                case 3:
+                    SpawnStar(14f);
+                    break;
+                default:
+                    break;
+            }
         }
+    }
+
+    void SpawnStar(float X_spawnpos)
+    {
+        
+        GameObject new_star = Instantiate(star, new Vector3(X_spawnpos, 10f, 0), Quaternion.identity);
+        new_star.AddComponent<Rigidbody2D>();
+        new_star.GetComponent<Rigidbody2D>().gravityScale = 2.5f;
+        last_star = Time.fixedTime;
     }
 }

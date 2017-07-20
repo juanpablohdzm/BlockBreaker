@@ -10,13 +10,13 @@ public class MusicPlayer : MonoBehaviour {
 
     private void Awake()
     {
-        print("Awake: " + GetInstanceID());
+        
     }
 
     // Use this for initialization
     void Start ()
     {
-        print("Start: " + GetInstanceID());
+        
         if (instance != null)
             Destroy(gameObject);
         else
