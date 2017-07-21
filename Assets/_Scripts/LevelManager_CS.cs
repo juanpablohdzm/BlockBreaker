@@ -16,6 +16,7 @@ public class LevelManager_CS : MonoBehaviour {
 
     public void Update()
     {
+        if(text != null)
         text.text = "Star Count: "+Brick.StarCountDestroy;
     }
     public void LoadLevel(string name)

@@ -12,6 +12,7 @@ public class Brick : MonoBehaviour {
 
     public static int StarNumber = 0;
     public static int StarCountDestroy = 0;
+    public GameObject Smoke;
 
    // public AudioClip Crack_sound;
     public int MaxHits;
@@ -41,6 +42,13 @@ public class Brick : MonoBehaviour {
         
     }
 
+    private void SmokePuff()
+    {
+        GameObject Smokepuff = Instantiate<GameObject>(Smoke, gameObject.transform.position, Quaternion.identity);
+        var SmokepuffColor = Smokepuff.GetComponent<ParticleSystem>().main;
+        SmokepuffColor.startColor = gameObject.GetComponent<SpriteRenderer>().color;
+    }
+
     void HitEvent(Collision2D collision)
     {
         if (collision.gameObject == ball.gameObject)
@@ -55,6 +63,7 @@ public class Brick : MonoBehaviour {
                 }
                 if(this.tag=="NewStar")
                     StarCountDestroy++;
+                SmokePuff();
                 Destroy(gameObject);
             }
             else
