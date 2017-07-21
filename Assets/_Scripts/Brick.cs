@@ -11,6 +11,7 @@ public class Brick : MonoBehaviour {
     private LevelManager_CS LevelManager;
 
     public static int StarNumber = 0;
+    public static int StarCountDestroy = 0;
 
    // public AudioClip Crack_sound;
     public int MaxHits;
@@ -49,8 +50,11 @@ public class Brick : MonoBehaviour {
                 if (IsStar)
                 {
                     StarNumber--;
+                    StarCountDestroy++;
                     LevelManager.LastStarDestroy();
                 }
+                if(this.tag=="NewStar")
+                    StarCountDestroy++;
                 Destroy(gameObject);
             }
             else
@@ -89,7 +93,8 @@ public class Brick : MonoBehaviour {
 
     
     // Update is called once per frame
-    void Update () {
-		
+    void Update ()
+    {
+      
 	}
 }

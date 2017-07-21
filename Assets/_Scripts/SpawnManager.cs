@@ -1,21 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpawnManager : MonoBehaviour {
     public GameObject star;
+    public Text text;
+
+    public float MaxTime = 25f;
     private float last_star;
+    private LevelManager_CS LevelManager;
+
     
 	// Use this for initialization
 	void Start ()
     {
-
+        LevelManager = GameObject.FindObjectOfType<LevelManager_CS>();
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        
+        float NewTime = MaxTime - Time.fixedTime;
+        text.text = "Time: " + (int)NewTime;
+        if (NewTime <= 0)
+            LevelManager.LoadNextLevel();
         if(Time.fixedTime>last_star+1.5f)
         {
            int Case_Spawn= Random.Range(0, 3);

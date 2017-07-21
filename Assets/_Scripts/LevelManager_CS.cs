@@ -2,12 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelManager_CS : MonoBehaviour {
 
-   
-	public void LoadLevel(string name)
+    public Text text;
+    public void Start()
     {
+        
+        Brick.StarCountDestroy = 0;
+
+    }
+
+    public void Update()
+    {
+        text.text = "Star Count: "+Brick.StarCountDestroy;
+    }
+    public void LoadLevel(string name)
+    {
+        Brick.StarNumber = 0;
         SceneManager.LoadScene(name,LoadSceneMode.Single);
     }
 
@@ -18,6 +31,7 @@ public class LevelManager_CS : MonoBehaviour {
 
     public void LoadNextLevel()
     {
+        Brick.StarNumber = 0;
         SceneManager.LoadScene(Application.loadedLevel+1); 
     }
 
