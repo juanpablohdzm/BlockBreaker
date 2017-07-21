@@ -20,4 +20,13 @@ public class LevelManager_CS : MonoBehaviour {
     {
         SceneManager.LoadScene(Application.loadedLevel+1); 
     }
+
+    public void LastStarDestroy()
+    {
+        if(Brick.StarNumber==0)
+        {
+            
+            LoadNextLevel();
+        }
+    }
 }

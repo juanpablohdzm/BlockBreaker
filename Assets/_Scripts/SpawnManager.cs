@@ -45,6 +45,7 @@ public class SpawnManager : MonoBehaviour {
         GameObject new_star = Instantiate(star, new Vector3(X_spawnpos, 10f, 0), Quaternion.identity);
         new_star.AddComponent<Rigidbody2D>();
         new_star.GetComponent<Rigidbody2D>().gravityScale = 2.5f;
+        new_star.tag="NewStar" ;
         last_star = Time.fixedTime;
     }
 }
