@@ -10,18 +10,20 @@ public class SpawnManager : MonoBehaviour {
     public float MaxTime = 25f;
     private float last_star;
     private LevelManager_CS LevelManager;
+    private float StartTime;
 
     
 	// Use this for initialization
 	void Start ()
     {
         LevelManager = GameObject.FindObjectOfType<LevelManager_CS>();
+        StartTime = Time.fixedTime;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        float NewTime = MaxTime - Time.fixedTime;
+        float NewTime = MaxTime - (Time.fixedTime-StartTime);
         text.text = "Time: " + (int)NewTime;
         if (NewTime <= 0)
             LevelManager.LoadNextLevel();
